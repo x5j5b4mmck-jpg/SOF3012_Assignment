@@ -519,3 +519,284 @@ a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* ===================================================
+   9. Share Page Form
+   =================================================== */
+
+.share-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden; /* Bo góc */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Tiêu đề (nền xanh lá) */
+.share-header {
+    background-color: #e6f7e6; /* Nền xanh lá nhạt */
+    padding: 15px 20px;
+}
+
+.share-header h4 {
+    margin: 0;
+    font-weight: bold;
+    color: #2e8b57; /* Màu xanh lá đậm */
+    font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+/* Thân form (nền trắng) */
+.share-body {
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Sử dụng lại style .form-group và .form-control đã có */
+.share-body .form-group label {
+    color: #555;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Đảm bảo input có viền cam (như form login) */
+.share-body .form-control {
+    border: 2px solid #ff9900;
+}
+
+/* Tùy chỉnh nút "Send" (giống nút Login) */
+.share-body .btn-form-submit {
+    background-color: #ff9900; /* Màu cam */
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px #d48f06;
+}
+.share-body .btn-form-submit:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+/* Style cho thông báo thành công */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.btn-unlike {
+    background-color: #87cefa; /* Màu xanh da trời (blue) */
+    color: #333;
+    padding: 6px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px #4682b4; /* Đổ bóng */
+}
+
+.btn-unlike:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+/* ===================================================
+   10. Admin Management Page
+   =================================================== */
+
+.admin-tabs {
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+.admin-tabs a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #555;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background-color: #f1f1f1;
+}
+.admin-tabs a.active {
+    background-color: #fff;
+    border-bottom: 2px solid #fff;
+    margin-bottom: -2px;
+}
+
+.admin-form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.admin-form {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống hàng trên màn hình nhỏ */
+}
+.admin-form .form-left {
+    flex: 1; /* Chiếm 1 phần */
+    min-width: 250px;
+    padding-right: 20px;
+}
+.admin-form .form-right {
+    flex: 2; /* Chiếm 2 phần */
+    min-width: 300px;
+}
+.admin-form .form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.poster-preview {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ff9900;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-group-radio {
+    margin-top: 15px;
+}
+.form-group-radio input {
+    margin-right: 5px;
+}
+.form-group-radio label {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.form-actions {
+    flex-basis: 100%; /* Chiếm toàn bộ hàng ngang */
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.btn-action {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-create { background-color: #28a745; }
+.btn-update { background-color: #007bff; }
+.btn-delete { background-color: #dc3545; }
+.btn-reset { background-color: #6c757d; }
+
+.btn-action:disabled, .btn-action.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Admin Table */
+.admin-table-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.admin-table th {
+    background-color: #f1f1f1;
+}
+.btn-edit {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+.btn-edit:hover {
+    text-decoration: underline;
+}
+
+/* Admin  */
+.admin-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.admin-pagination span {
+    font-weight: bold;
+    color: #555;
+}
+.admin-pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+.admin-pagination li {
+    margin: 0 3px;
+}
+.admin-pagination li a {
+    display: block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #007bff;
+}
+.admin-pagination li.active a {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* quan ly  */
+
+.admin-table tbody tr.active-row {
+    background-color: #fffde7; /* Màu vàng nhạt */
+    font-weight: bold;
+}
+
+/* Cập nhật vào style.css */
+
+.poster-box {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.poster-box img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định giống trong hình */
+    object-fit: cover; /* Giữ tỉ lệ ảnh không bị méo */
+    border: 2px dashed #ff9900; /* Viền nét đứt màu cam */
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#file-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.poly.asm.dao.VideoDAO;
 import com.poly.asm.entity.Video;
 
-@WebServlet("/index")
+// Mapping 2 đường dẫn:
+// "/index": Đường dẫn chuẩn
+
+@WebServlet({"/index", ""}) 
 public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private VideoDAO videoDAO;
@@ -23,13 +26,17 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        // Lấy 6 video giảm dần theo lượt xem (như trong spec)
-        List<Video> videos = videoDAO.findTop6ByViews(); 
+        // 1. Lấy dữ liệu từ CSDL
+        List<Video> videos = videoDAO.findAll(1, 6); // Ví dụ lấy 6 video trang 1
+        // Nếu bạn chưa viết hàm findAll phân trang, dùng tạm: videoDAO.findAll(Video.class);
         
-        // (Bạn cũng cần xử lý logic phân trang ở đây)
-        
+        // 2. Đẩy dữ liệu sang JSP
         request.setAttribute("videos", videos);
-        request.setAttribute("view", "/site/home/index.jsp"); // View sẽ được include
+        
+        // 3. Thiết lập view nội dung là trang chủ
+        request.setAttribute("view", "/site/home/index.jsp"); 
+        
+        // 4. Forward về trang layout chính
         request.getRequestDispatcher("/site/layout.jsp").forward(request, response);
     }
 }

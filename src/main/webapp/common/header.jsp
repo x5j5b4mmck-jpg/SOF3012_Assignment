@@ -15,11 +15,28 @@
             </li>
         </c:if>
 
+        <c:if test="${not empty sessionScope.user && sessionScope.user.admin}">
+            <li class="nav-item">
+                <a href="#" style="color: #dc3545;">ADMINISTRATION</a>
+                
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<c:url value='/admin/video-management'/>">
+                        Video Management
+                    </a>
+                    
+                    <a class="dropdown-item" href="<c:url value='/admin/user-management'/>">
+                        User Management
+                    </a>
+                    
+                    <a class="dropdown-item" href="<c:url value='/admin/reports'/>">
+                        Reports & Stats
+                    </a>
+                </div>
+            </li>
+        </c:if>
         <li class="nav-item">
             <a href="#">MY ACCOUNT</a>
-            
             <div class="dropdown-menu">
-                
                 <c:if test="${empty sessionScope.user}">
                     <a class="dropdown-item" href="<c:url value='/login'/>">Login</a>
                     <a class="dropdown-item" href="<c:url value='/register'/>">Registration</a>
@@ -29,9 +46,9 @@
                 <c:if test="${not empty sessionScope.user}">
                     <a class="dropdown-item" href="<c:url value='/edit-profile'/>">Edit Profile</a>
                     <a class="dropdown-item" href="<c:url value='/change-password'/>">Change Password</a>
+                    <hr style="margin: 5px 0;">
                     <a class="dropdown-item" href="<c:url value='/logout'/>">Logoff</a>
                 </c:if>
-                
             </div>
         </li>
     </ul>

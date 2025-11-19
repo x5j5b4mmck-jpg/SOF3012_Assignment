@@ -1,6 +1,7 @@
 package com.poly.asm.controller;
 
 import java.io.IOException;
+import java.util.List; // Thêm import
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,18 +29,30 @@ public class VideoDetailServlet extends HttpServlet {
             Video video = videoDAO.findById(Video.class, videoId);
             
             if (video != null) {
-                // Tăng lượt xem (theo spec [Poster].Click)
+                // 1. TĂNG LƯỢT XEM (theo spec [Poster].Click)
                 video.setViews(video.getViews() + 1);
                 videoDAO.update(video);
                 
                 request.setAttribute("video", video);
                 
-                // (Xử lý logic lấy các video đã xem từ cookie)
-                
-                // (Xử lý lấy các video liên quan ở sidebar)
+                // 2. LẤY VIDEO LIÊN QUAN (Sidebar)
+                // Lấy 5 video nhiều lượt xem nhất, loại trừ video hiện tại
+                List<Video> relatedVideos = videoDAO.findTop5Related(videoId);
+                request.setAttribute("relatedVideos", relatedVideos);
+
+                // 3. XỬ LÝ "ĐÃ XEM" (Lấy từ cookie) - Chức năng nâng cao
+                // (Bạn có thể thêm logic đọc/ghi cookie "viewed" ở đây)
                 
                 request.setAttribute("view", "/site/home/detail.jsp");
+            } else {
+                // Không tìm thấy video
+                response.sendRedirect(request.getContextPath() + "/index");
+                return;
             }
+        } else {
+            // Không có id
+            response.sendRedirect(request.getContextPath() + "/index");
+            return;
         }
         
         request.getRequestDispatcher("/site/layout.jsp").forward(request, response);

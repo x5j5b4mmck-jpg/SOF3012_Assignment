@@ -7,16 +7,16 @@
         <div class="video-detail-card">
             
             <div class="video-player-box">
-                <iframe 
-                    width="100%" 
-                    height="450" 
-                    src="https://www.youtube.com/embed/${video.id}" 
-                    title="${video.title}" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+    <iframe 
+        width="100%" 
+        height="450" 
+        src="https://www.youtube.com/embed/${video.id}" 
+        title="${video.title}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
             
             <div class="video-info-box">
                 <h4>${video.title}</h4>

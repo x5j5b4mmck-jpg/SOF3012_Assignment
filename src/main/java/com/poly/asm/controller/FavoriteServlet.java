@@ -32,8 +32,18 @@ public class FavoriteServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         
         if (uri.contains("/favorites")) {
-            // Hiển thị trang "My Favorites"
+        	
+        	// 1. Lấy danh sách Favorite từ DAO
             List<Favorite> favorites = favoriteDAO.findByUser(user.getId());
+            
+            // 2. Gửi danh sách này sang JSP
+            request.setAttribute("favoritesList", favorites); 
+            
+            // 3. Chỉ định view là favorites.jsp
+            request.setAttribute("view", "/site/home/favorites.jsp");
+            
+            // Hiển thị trang "My Favorites"
+  
             request.setAttribute("videos", favorites); // Gửi danh sách favorites
             request.setAttribute("view", "/site/home/favorites.jsp");
             
@@ -45,11 +55,10 @@ public class FavoriteServlet extends HttpServlet {
             return; // Dừng lại để tránh forward
             
         } else if (uri.contains("/unlike")) {
-            // Xử lý "Unlike" video (từ trang favorites)
-            handleUnlike(request, response, user);
-            // Tải lại trang favorites
-            response.sendRedirect(request.getContextPath() + "/favorites");
+        	// Cập nhật: Sau khi unlike, quay lại trang favorites
+        	response.sendRedirect(request.getContextPath() + "/favorites?t=" + System.currentTimeMillis());
             return; // Dừng lại để tránh forward
+            
         }
 
         request.getRequestDispatcher("/site/layout.jsp").forward(request, response);
